@@ -16,9 +16,11 @@ Some scripts need a real terminal: progress bars, `curses` interfaces, coloured 
 
 ## Installation
 
-1. Build the plugin (see [Building from Source](#building-from-source)).
+1. Download the `.zip` from the [latest release](../../releases/latest).
 2. In PyCharm, go to Settings > Plugins > gear icon > Install Plugin from Disk.
-3. Select the `.zip` from `build/distributions/` and restart PyCharm if prompted.
+3. Select the downloaded `.zip` and restart PyCharm if prompted.
+
+You can also build the `.zip` yourself (see [Building from Source](#building-from-source)).
 
 ## Usage
 
