@@ -1,0 +1,62 @@
+<idea-plugin>
+    <id>com.consoleemulationtoggle.pycharm-console-emulation-toggle</id>
+    <name>Console Emulation Toggle</name>
+    <vendor email="feedback@rootmllab.com" url="https://github.com/RootML">RootML</vendor>
+    <version>1.0.0</version>
+    <description><![CDATA[
+        <p>Adds a one-click toggle for the <b>Emulate terminal in output console</b> option of
+        Python run configurations, without opening the Run/Debug Configurations dialog.</p>
+
+        <p>Some scripts need a real terminal: progress bars, <code>curses</code> interfaces,
+        coloured output and libraries that check <code>isatty()</code>. Others are easier to read
+        and search in the plain output console. This plugin makes switching between the two
+        a single click.</p>
+
+        <p>The toggle appears in two places:</p>
+        <ul>
+            <li><b>Main toolbar (right side):</b> changes the run configuration currently selected
+            in the run widget.</li>
+            <li><b>Run and Debug tool window toolbar:</b> changes the configuration that tab was
+            started from. Click Rerun to apply it right away.</li>
+        </ul>
+
+        <p>The option belongs to each run configuration, so each one keeps its own value. A change
+        takes effect the next time the configuration runs; a process that is already running
+        is not affected.</p>
+    ]]></description>
+
+    <change-notes><![CDATA[
+        <h3>1.0.0</h3>
+        <ul>
+            <li>Initial release.</li>
+            <li>Toggle for "Emulate terminal in output console" in the main toolbar and in the
+            Run and Debug tool window toolbars.</li>
+        </ul>
+    ]]></change-notes>
+
+    <depends>com.intellij.modules.platform</depends>
+    <depends>com.intellij.modules.python</depends>
+
+    <actions>
+        <action id="ConsoleEmulationToggle.ToggleForSelected"
+                class="com.consoleemulationtoggle.ToggleEmulateTerminalForSelectedAction"
+                text="Emulate Terminal in Output Console"
+                description="Toggle 'Emulate terminal in output console' for the selected run configuration"
+                icon="/icons/emulateTerminal.svg">
+            <add-to-group group-id="MainToolbarRight" anchor="last"/>
+        </action>
+
+        <action id="ConsoleEmulationToggle.ToggleInRunTab"
+                class="com.consoleemulationtoggle.ToggleEmulateTerminalInRunTabAction"
+                text="Emulate Terminal in Output Console"
+                description="Toggle 'Emulate terminal in output console' for this tab's run configuration"
+                icon="/icons/emulateTerminal.svg">
+            <!-- Run tool window: both toolbar groups the platform registers for it -->
+            <add-to-group group-id="RunTab.TopToolbar" anchor="last"/>
+            <add-to-group group-id="RunTab.TopToolbar.Old" anchor="last"/>
+            <!-- Debug tool window: both toolbar groups the platform registers for it -->
+            <add-to-group group-id="XDebugger.ToolWindow.TopToolbar3" anchor="last"/>
+            <add-to-group group-id="XDebugger.ToolWindow.TopToolbar" anchor="last"/>
+        </action>
+    </actions>
+</idea-plugin>
