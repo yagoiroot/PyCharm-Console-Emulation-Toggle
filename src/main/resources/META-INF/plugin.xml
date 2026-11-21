@@ -5,24 +5,41 @@
     <version>1.0.0</version>
     <description><![CDATA[
         <p>Adds a one-click toggle for the <b>Emulate terminal in output console</b> option of
-        Python run configurations, without opening the Run/Debug Configurations dialog.</p>
+        Python run configurations, so you can switch it without opening the Run/Debug
+        Configurations dialog.</p>
 
         <p>Some scripts need a real terminal: progress bars, <code>curses</code> interfaces,
         coloured output and libraries that check <code>isatty()</code>. Others are easier to read
         and search in the plain output console. This plugin makes switching between the two
         a single click.</p>
 
-        <p>The toggle appears in two places:</p>
+        <h3>Where to find it</h3>
         <ul>
-            <li><b>Main toolbar (right side):</b> changes the run configuration currently selected
-            in the run widget.</li>
+            <li><b>Main toolbar (right side):</b> changes the run configuration selected in the
+            run widget.</li>
             <li><b>Run and Debug tool window toolbar:</b> changes the configuration that tab was
-            started from. Click Rerun to apply it right away.</li>
+            started from, whatever is selected in the run widget. Click Rerun to apply the
+            change right away.</li>
+        </ul>
+        <p>The button's tooltip names the configuration and shows whether the option is on
+        or off.</p>
+
+        <h3>Things to know</h3>
+        <ul>
+            <li><b>It's per configuration.</b> PyCharm stores this option on each run
+            configuration, so each one keeps its own value, the same as if you'd changed it in
+            the dialog. Shared configurations saved in <code>.idea/runConfigurations</code> are
+            updated too.</li>
+            <li><b>It applies on the next run.</b> A process that's already running isn't
+            affected.</li>
+            <li><b>Python script configurations only.</b> The main toolbar button is disabled
+            when another kind of configuration is selected, or when the run widget is set to
+            "Current File". The tool window button is hidden on tabs for other kinds of
+            configuration.</li>
         </ul>
 
-        <p>The option belongs to each run configuration, so each one keeps its own value. A change
-        takes effect the next time the configuration runs; a process that is already running
-        is not affected.</p>
+        <p>Source code and issue tracker:
+        <a href="https://github.com/yagoiroot/PyCharm-Console-Emulation-Toggle">GitHub</a>.</p>
     ]]></description>
 
     <change-notes><![CDATA[
